@@ -18,7 +18,7 @@
 - Change `path_results` and `path_dataset` parameters to match your own prepared folders ( see step 2 ). 
 - Run the notebooks ( Restart kernel and clear output, Restart kernel and run all )
 
-7) Open conda command prompt and run Tensorboard
+7) Open anaconda prompt and run Tensorboard
 
 - `tensorboard --logdir .`
 
