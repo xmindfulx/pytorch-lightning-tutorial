@@ -21,7 +21,7 @@
 - Read documentation in notebooks. 
 - Run the notebooks ( Restart kernel and run all cells )
 
-### Intermediate Guide ( Existing Conda Installation or New Virtual Conda Environment )
+### Intermediate Guide
 
 1) **Build New Virtual Environment**
 
