@@ -23,7 +23,9 @@
 
 ### Intermediate Guide
 
-1) **Build New Virtual Environment**
+1) [Download and setup Miniconda](https://docs.conda.io/en/latest/miniconda.html)
+
+3) **Build New Virtual Environment**
 
 - `conda create -n tutorial -y`
 - `conda activate tutorial`
@@ -31,7 +33,7 @@
 - `conda install -c conda-forge matplotlib ipython jupyter -y`
 - `pip install pytorch-lightning`
 
-2) **Running Examples - Jupyter Notebooks**
+3) **Running Examples - Jupyter Notebooks**
 
 - start notebook by `jupyter-notebook .`
 - Read documentation in notebooks. 
