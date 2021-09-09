@@ -2,11 +2,11 @@
 
 1) **Download the repo** ( zip or `git clone` )
 
-2) **Follow Anaconda or Miniconda Environment Guide**
-- Choose Anaconda if you are not comfortable with terminal / command line
-- Choose Miniconda if you are comfortable with terminal / command line
+2) **Follow Beginner or Intermediate Setup Environment Guide**
+- Choose Beginner if you are not comfortable with terminal / command line
+- Choose Intermediate if you are comfortable with terminal / command line
 
-### Anaconda Environment Guide 
+### Beginner Guide 
 
 1) [Download and setup Anaconda](https://docs.anaconda.com/anaconda/install/windows/)
 
@@ -21,7 +21,7 @@
 - Read documentation in notebooks. 
 - Run the notebooks ( Restart kernel and run all cells )
 
-### Installation Guide ( Existing Conda Installation or New Virtual Conda Environment )
+### Intermediate Guide ( Existing Conda Installation or New Virtual Conda Environment )
 
 1) **Build New Virtual Environment**
 
