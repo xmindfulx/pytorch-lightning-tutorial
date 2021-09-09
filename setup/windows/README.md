@@ -1,26 +1,38 @@
-## Installation Guide
+## Windows 10 Setup Guide
 
 1) **Download the repo** ( zip or `git clone` )
 
-2) **Prepare folders** 
-- Results Folder : location where the results will be stored 
-- Dataset Folder : location where data files are found ( initially located inside repo )
+2) **Follow Anaconda or Miniconda Environment Guide**
+- Choose Anaconda if you are not comfortable with terminal / command line
+- Choose Miniconda if you are comfortable with terminal / command line
 
-3) [Download and setup Anaconda](https://docs.anaconda.com/anaconda/install/windows/)
+### Anaconda Environment Guide 
 
-4) Open anaconda prompt and install pytorch-lightning and opencv using following commands
+1) [Download and setup Anaconda](https://docs.anaconda.com/anaconda/install/windows/)
+
+2) **Open anaconda prompt and install pytorch-lightning and opencv using following commands**
 
 - `pip install pytorch-lightning`
 - `pip install opencv-python`
 
-5) Running Examples - Jupyter Notebooks
+3) **Running Examples - Jupyter Notebooks**
 
 - Open jupyter notebooks ( GUI application ) and navigate to downloaded repo
 - Read documentation in notebooks. 
-- Change `path_results` and `path_dataset` parameters to match your own prepared folders ( see step 2 ). 
 - Run the notebooks ( Restart kernel and run all cells )
 
-7) Open anaconda prompt and run Tensorboard
+### Installation Guide ( Existing Conda Installation or New Virtual Conda Environment )
 
-- `tensorboard --logdir .`
+1) **Build New Virtual Environment**
 
+- `conda create -n tutorial -y`
+- `conda activate tutorial`
+- `conda install -c conda-forge opencv -y`
+- `conda install -c conda-forge matplotlib ipython jupyter -y`
+- `pip install pytorch-lightning`
+
+2) **Running Examples - Jupyter Notebooks**
+
+- start notebook by `jupyter-notebook .`
+- Read documentation in notebooks. 
+- Run the notebooks ( Restart kernel and run all cells )
