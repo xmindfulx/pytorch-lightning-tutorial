@@ -1,6 +1,6 @@
 ## Installation Guide
 
-1) Download the repo ( zip or git clone )
+1) Download the repo ( zip or `git clone` )
 
 2) Prepare folders - Dataset ( datafiles found inside repo ), Results
 
