@@ -18,7 +18,7 @@
 - Open jupyter notebooks ( GUI application ) and navigate to downloaded repo
 - Read documentation in notebooks. 
 - Change `path_results` and `path_dataset` parameters to match your own prepared folders ( see step 2 ). 
-- Run the notebooks ( Restart kernel and clear output, Restart kernel and run all )
+- Run the notebooks ( Restart kernel and run all cells )
 
 7) Open anaconda prompt and run Tensorboard
 
