@@ -6,7 +6,7 @@
 
 3) [Download and setup Anaconda](https://docs.anaconda.com/anaconda/install/windows/)
 
-4) Open conda command prompt and install pytorch-lightning and opencv
+4) Open anaconda prompt and install pytorch-lightning and opencv using following commands
 
 - `pip install pytorch-lightning`
 - `pip install opencv`
