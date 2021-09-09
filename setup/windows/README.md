@@ -2,7 +2,9 @@
 
 1) Download the repo ( zip or `git clone` )
 
-2) Prepare folders - Dataset ( data files found inside repo ), Results
+2) Prepare folders 
+- Results Folder : location where the results will be stored 
+- Dataset Folder : location where data files are found ( initially located inside repo )
 
 3) [Download and setup Anaconda](https://docs.anaconda.com/anaconda/install/windows/)
 
