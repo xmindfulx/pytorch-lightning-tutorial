@@ -9,9 +9,9 @@
 4) Open anaconda prompt and install pytorch-lightning and opencv using following commands
 
 - `pip install pytorch-lightning`
-- `pip install opencv`
+- `pip install opencv-python`
 
-5) Running Examples Via Jupyter Notebooks
+5) Running Examples - Jupyter Notebooks
 
 - Open jupyter notebooks ( GUI application ) and navigate to downloaded repo
 - Read documentation in notebooks. 
