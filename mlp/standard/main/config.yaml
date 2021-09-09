@@ -1,0 +1,38 @@
+
+# Author: MINDFUL
+# Purpose: Config File ( Multi-Layer-Perceptron )
+
+#--------------------------------
+# Parameters: All Paths (I / O)
+#--------------------------------
+
+path_results: /develop/results/mlp/
+path_dataset: /develop/data/classification/data.csv
+
+#-------------------------------
+# Parameters: Training Model
+#-------------------------------
+
+# Config: Validation Rate
+
+valid_rate: 1
+
+# Config: Randomization
+
+seed: 123
+
+# Config: CPU 
+
+num_workers: 1
+
+# Config: GPU
+
+use_gpu: 0
+gpu_list: [0, 1]
+
+# Config: Gradient Descent
+
+batch_size: 16
+num_epochs: 100
+learning_rate: 0.01
+
