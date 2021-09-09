@@ -2,7 +2,7 @@
 
 1) **Download the repo** ( zip or `git clone` )
 
-2) **Follow Beginner or Intermediate Setup Environment Guide**
+2) **Follow Beginner or Intermediate Setup Guide**
 - Choose Beginner if you are not comfortable with terminal / command line
 - Choose Intermediate if you are comfortable with terminal / command line
 
