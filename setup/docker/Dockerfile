@@ -42,7 +42,7 @@ RUN bash Miniconda3-latest-Linux-x86_64.sh -p /develop/build/miniconda3 -b
 ENV PATH=/develop/build/miniconda3/bin:${PATH}
 RUN conda update -y conda
 
-#RUN conda install -c pytorch torchvision cudatoolkit=10.2 -y
+RUN conda install -c pytorch torchvision cudatoolkit=10.2 -y
 RUN conda install -c conda-forge pytorch-lightning
 
 RUN conda install -c conda-forge opencv
