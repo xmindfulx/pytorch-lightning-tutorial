@@ -1,8 +1,8 @@
 ## Installation Guide
 
-1) Download the repo ( zip or `git clone` )
+1) **Download the repo** ( zip or `git clone` )
 
-2) Prepare folders 
+2) **Prepare folders** 
 - Results Folder : location where the results will be stored 
 - Dataset Folder : location where data files are found ( initially located inside repo )
 
