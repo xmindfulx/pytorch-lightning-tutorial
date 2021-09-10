@@ -163,17 +163,17 @@ class Writer:
     # Finalize: Learned Metrics
     #----------------------------
 
-    def finalize(self):
+    def finalize_results(self):
 
         # Format: Saved Features ( Video )
    
-        path_video = os.path.join(self.path_videos, "features.mp4")
+        path_video = os.path.join(self.path_videos, "features.avi")
 
         self.make_video( self.path_features, path_video )
 
         # Format: Training Loss ( Video )
 
-        path_video = os.path.join(self.path_videos, "training_loss.mp4")
+        path_video = os.path.join(self.path_videos, "training_loss.avi")
 
         self.make_video( self.path_training_loss, path_video )
 
@@ -225,7 +225,7 @@ class Writer:
 
         # Create: Video ( MP4 )
 
-        video = cv2.VideoWriter(path_save, 0x7634706d, fps, (width,height))
+        video = cv2.VideoWriter(path_save, 0, fps, (width,height))
 
         for current_file in all_files:
         

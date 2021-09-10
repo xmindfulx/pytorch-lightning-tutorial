@@ -5,6 +5,7 @@
 import torch
 import numpy as np
 import torch.nn as nn                                                                      
+import matplotlib.pyplot as plt
 
 from pytorch_lightning import LightningModule
 
@@ -17,6 +18,10 @@ class MLP(LightningModule):
     def __init__(self, params):
 
         super().__init__()
+
+        # Load: Logger
+        
+        self.logger_choice = params["logger_choice"]        
 
         # Load: Model Parameters
         
@@ -97,17 +102,19 @@ class MLP(LightningModule):
 
         # Update: Training Plots
 
-        if(self.current_epoch > 0):
+        if(self.logger_choice == 1):
+            
+            if(self.current_epoch > 0):
 
-            logger = self.logger.experiment
+                logger = self.logger.experiment
 
-            logger.log_training_loss(self.current_epoch)
-    
-            # Finalize: Learned Features & Metrics ( Video )
+                logger.log_training_loss(self.current_epoch)
 
-            if(self.current_epoch == self.max_epochs - 1):
-                
-                logger.finalize_results()
+                # Finalize: Learned Features & Metrics ( Video )
+
+                if(self.current_epoch == self.max_epochs - 1):
+
+                    logger.finalize_results()
 
     #----------------------------
     # Create: Validation Cycle 
@@ -153,19 +160,27 @@ class MLP(LightningModule):
         self.log("accuracy", results["model_accuracy"], on_epoch = True)
         self.log("precision", results["model_precision"], on_epoch = True)
 
+        preds, feature_space = self.prepare_world(all_samples)
+            
         if(self.current_epoch > 0):
+            
+            if(self.logger_choice == 0):
+                
+                # Logger: Feature Visualizations  
+                
+                self.log_features(all_samples, all_labels, feature_space, preds, self.current_epoch)
+                
+            else:
+                    
+                logger = self.logger.experiment
 
-            logger = self.logger.experiment
+                # Logger: Validation Plots
 
-            # Logger: Validation Plots
+                logger.log_valid_results(self.current_epoch)
 
-            logger.log_valid_results(self.current_epoch)
+                # Logger: Feature Visualizations  
 
-            # Logger: Feature Visualizations  
-
-            preds, feature_space = self.prepare_world(all_samples)
-
-            logger.log_features(all_samples, all_labels, feature_space, preds, self.current_epoch)
+                logger.log_features(all_samples, all_labels, feature_space, preds, self.current_epoch)
 
     #----------------------------
     # Run: Validation Metrics
@@ -262,4 +277,41 @@ class MLP(LightningModule):
             predictions.append( torch.argmax(self(sample).detach()) )
             
         return torch.tensor(predictions), all_points
+
+    #----------------------------
+    # Logging: Feature Embeddings
+    #----------------------------
+
+    def log_features(self, samples, labels, feature_space, preds, epoch, z = 4, f_s = 20, p_s = (15, 11)):
+
+        # Assign: Figure Name
+
+        name = str(epoch).zfill(z) + ".png"
+
+        # Format: Plot
+
+        plt.style.use("seaborn")
+
+        # Assign: Colors
+
+        face_colors = [ "blue" if(ele == 0) else "red" for ele in labels ]
+        back_colors = [ "darkblue" if(ele == 0) else "darkred" for ele in preds ]
+
+        # Plot: Dataset & Feature Space
+
+        fig, ax = plt.subplots(figsize = p_s)
+
+        ax.scatter( feature_space[:, 0], feature_space[:, 1], c = back_colors )
+        ax.scatter( samples[:, 0], samples[:, 1], s = 200, 
+                    linewidths = 3, edgecolor = "black", c = face_colors )
+
+        ax.set_xlabel("x1", fontsize = f_s)
+        ax.set_ylabel("x2", fontsize = f_s)
+
+        fig.suptitle("Learned Decision Boundary", fontsize = f_s)
+
+        plt.subplots_adjust(top = 0.90)
+      
+        logger = self.logger.experiment
+        logger.add_figure(name,  plt.gcf())
 

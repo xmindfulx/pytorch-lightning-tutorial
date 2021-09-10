@@ -36,3 +36,8 @@ batch_size: 16
 num_epochs: 100
 learning_rate: 0.01
 
+# Config: Logger 
+# - 0 : Tensorboard
+# - 1 : Custom Logger
+
+logger_choice: 1

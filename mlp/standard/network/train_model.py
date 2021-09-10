@@ -3,6 +3,7 @@
 #--------------------------------
 
 from pytorch_lightning.plugins import DDPPlugin
+from pytorch_lightning import loggers as pl_loggers
 from pytorch_lightning import Trainer, seed_everything
 
 #--------------------------------
@@ -27,6 +28,7 @@ def run(params):
     num_epochs = params["num_epochs"]
     path_dataset = params["path_dataset"]
     path_results = params["path_results"]
+    logger_choice = params["logger_choice"]
 
     # Initialize: Gloabl Seed
 
@@ -48,7 +50,10 @@ def run(params):
 
     # Initialize: Logger 
 
-    logger = Logger(path_results, name = "", version = 0)
+    if(logger_choice == 0):
+        logger = pl_loggers.TensorBoardLogger(path_results, name = "", version = 0)
+    else:
+        logger = Logger(path_results, name = "", version = 0)
 
     # Train: Model
 

@@ -4,6 +4,7 @@
 
 import torch
 import torch.nn as nn                                                                      
+import matplotlib.pyplot as plt
 
 from pytorch_lightning import LightningModule
 
@@ -16,6 +17,10 @@ class Linear_Regression(LightningModule):
     def __init__(self, params):
 
         super().__init__()
+
+        # Load: Logger
+
+        self.logger_choice = params["logger_choice"]
 
         # Load: Model Parameters
         
@@ -92,17 +97,19 @@ class Linear_Regression(LightningModule):
 
         # Update: Training Plots
 
-        if(self.current_epoch > 0):
+        if(self.logger_choice == 1):
+            
+            if(self.current_epoch > 0):
 
-            logger = self.logger.experiment
+                logger = self.logger.experiment
 
-            logger.log_training_loss(self.current_epoch)
-    
-            # Finalize: Learned Features & Metrics ( Video )
+                logger.log_training_loss(self.current_epoch)
 
-            if(self.current_epoch == self.max_epochs - 1):
-                
-                logger.finalize_results()
+                # Finalize: Learned Features & Metrics ( Video )
+
+                if(self.current_epoch == self.max_epochs - 1):
+
+                    logger.finalize_results()
 
     #----------------------------
     # Create: Validation Cycle 
@@ -140,6 +147,48 @@ class Linear_Regression(LightningModule):
 
         # Logger: Visualizations  
 
-        logger = self.logger.experiment
-        logger.log_linear_regression(all_samples, all_labels, all_preds, self.current_epoch)
+        if(self.logger_choice == 0):
+        
+            self.log_linear_regression(all_samples, all_labels, all_preds, self.current_epoch)
+            
+        else:
+            
+            logger = self.logger.experiment
+            logger.log_linear_regression(all_samples, all_labels, all_preds, self.current_epoch)
 
+    #----------------------------
+    # Logging: Feature Embeddings
+    #----------------------------
+
+    def log_linear_regression(self, samples, labels, preds, epoch, z = 4, f_s = 20, p_s = (15, 11)):
+
+        # Format: Feature Vectors
+
+        preds = torch.squeeze(preds)
+        samples = torch.squeeze(samples)
+
+        # Format: Plot
+
+        plt.style.use("seaborn")
+
+        # Assign: Figure Name
+
+        name = str(epoch).zfill(z) + ".png"
+
+        # Visualize: Results
+
+        fig = plt.figure(figsize = p_s)
+
+        ax = fig.add_subplot()
+
+        ax.scatter( samples, labels, c = "blue")
+        ax.plot( samples, preds, c = "red")
+        ax.set_xlabel("x1", fontsize = f_s)
+        ax.set_ylabel("x2", fontsize = f_s)
+
+        fig.suptitle("Learned Linear Regression", fontsize = f_s)
+
+        plt.subplots_adjust(top = 0.90)
+
+        logger = self.logger.experiment
+        logger.add_figure(name,  plt.gcf())
