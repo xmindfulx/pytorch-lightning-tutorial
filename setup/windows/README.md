@@ -1,19 +1,3 @@
-## Common Windows 10 Problems
-
-A few users have reported different jupyter notebook errors in the form of kernel crashes / freezes, or errors that are generally .dll file related. An example of such is  
-
-`Initializing libiomp5md.dll, but found mk2iomp5md.dll already initialized`
-
-A temporary solution is to include the following lines as the first cell in your jupyter notebook.
-
-`import os`
-
-`os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"`
-
-However, this solution is not perfect, and sensitvity tests haven't been done to see exactly what this impacts. 
-
-The safer and more stable option would be to invest time learning the basics of [docker containers](https://www.docker.com/resources/what-container).
-
 ## Windows 10 Setup Guide
 
 1) **Download the repo** ( zip or `git clone` )
@@ -54,3 +38,19 @@ The safer and more stable option would be to invest time learning the basics of 
 - start notebook by `jupyter-notebook .`
 - Read documentation in notebooks. 
 - Run the notebooks ( Restart kernel and run all cells )
+
+## Common Windows 10 Problems
+
+A few users have reported different jupyter notebook errors in the form of kernel crashes / freezes, or errors that are generally .dll file related. An example of such is  
+
+`Initializing libiomp5md.dll, but found mk2iomp5md.dll already initialized`
+
+A temporary solution is to include the following lines as the first cell in your jupyter notebook.
+
+`import os`
+
+`os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"`
+
+However, this solution is not perfect, and sensitvity tests haven't been done to see exactly what this impacts. 
+
+The safer and more stable option would be to invest time learning the basics of [docker containers](https://www.docker.com/resources/what-container).
