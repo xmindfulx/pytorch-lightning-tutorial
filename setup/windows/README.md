@@ -5,6 +5,7 @@ A few users have reported different jupyter notebook errors in the form of kerne
 `Initializing libiomp5md.dll, but found mk2iomp5md.dll already initialized`
 
 A temporary solution is to include the following lines as the first cell in your jupyter notebook.
+
 `import os`
 
 `os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"`
