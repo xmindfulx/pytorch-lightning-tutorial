@@ -2,4 +2,4 @@
 
 `cd main`
 
-`python experiment -config config.yaml`
+`python experiment.py -config config.yaml`
