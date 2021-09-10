@@ -1,2 +1,16 @@
 # Pytorch Tutorial
-Pytorch Lightning Examples 
+
+
+## Beginner:
+
+- Linear Regression 
+
+- Multi-Layer-Perceptron
+
+## Intermediate:
+
+- Coming Soon!
+
+## Advanced:
+
+- Coming Soon!
