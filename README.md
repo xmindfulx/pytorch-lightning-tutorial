@@ -1,2 +1,2 @@
-# tutorial
+# Pytorch Tutorial
 Pytorch Lightning Examples 
